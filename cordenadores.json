@@ -1,0 +1,39 @@
+{
+ "cursos":[
+  {
+   "curso":"ADS",
+   "coordenadores":[
+    {
+     "nome":"Carlos Silva",
+     "titulo":"Conheça o cordenador Carlos",
+     "descricao":"Professor de backend e arquitetura.",
+     "video":"https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+    },
+    {
+     "nome":"Fernanda Rocha",
+     "titulo":"Conheça a coordenadora Fernanda",
+     "descricao":"Especialista em frontend.",
+     "video":"https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+    },
+    {
+     "nome":"Ricardo Alves",
+     "titulo":"Conheça o coordenador Ricardo",
+     "descricao":"Professor de banco de dados.",
+     "video":"https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+    }
+   ]
+  },
+
+  {
+   "curso":"Administração",
+   "coordenadores":[
+    {
+     "nome":"Juliana Costa",
+     "titulo":"Conheça a coordenadora Juliana",
+     "descricao":"Especialista em gestão.",
+     "video":"https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+    }
+   ]
+  }
+ ]
+}
