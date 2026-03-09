@@ -1,100 +1,12 @@
 {
   "cursos": [
     {
-      "curso": "SEGURANÇA PÚBLICA",
+      "curso": "ADMINISTRAÇÃO",
       "coordenadores": [
         {
-          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
-          "titulo": "Conheça a coordenadora Ana Flavia",
-          "descricao": "Coordenadora do curso de Segurança Pública.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "GESTÃO PÚBLICA",
-      "coordenadores": [
-        {
-          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
-          "titulo": "Conheça a coordenadora Ana Flavia",
-          "descricao": "Coordenadora do curso de Gestão Pública.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "CIÊNCIA POLÍTICA",
-      "coordenadores": [
-        {
-          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
-          "titulo": "Conheça a coordenadora Ana Flavia",
-          "descricao": "Coordenadora do curso de Ciência Política.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "SERVIÇOS JURÍDICOS E NOTARIAIS",
-      "coordenadores": [
-        {
-          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
-          "titulo": "Conheça a coordenadora Ana Flavia",
-          "descricao": "Coordenadora do curso de Serviços Jurídicos e Notariais.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "GESTÃO DA TECNOLOGIA DA INFORMAÇÃO",
-      "coordenadores": [
-        {
-          "nome": "DEIVSON CHAVES DA SILVA",
-          "titulo": "Conheça o coordenador Deivson",
-          "descricao": "Coordenador do curso de Gestão da Tecnologia da Informação.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "CIÊNCIA DE DADOS",
-      "coordenadores": [
-        {
-          "nome": "DEIVSON CHAVES DA SILVA",
-          "titulo": "Conheça o coordenador Deivson",
-          "descricao": "Coordenador do curso de Ciência de Dados.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "DATA SCIENCE",
-      "coordenadores": [
-        {
-          "nome": "DEIVSON CHAVES DA SILVA",
-          "titulo": "Conheça o coordenador Deivson",
-          "descricao": "Coordenador do curso de Data Science.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "COMPUTAÇÃO EM NUVEM",
-      "coordenadores": [
-        {
-          "nome": "DEIVSON CHAVES DA SILVA",
-          "titulo": "Conheça o coordenador Deivson",
-          "descricao": "Coordenador do curso de Computação em Nuvem.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "INTERNET DAS COISAS",
-      "coordenadores": [
-        {
-          "nome": "DEIVSON CHAVES DA SILVA",
-          "titulo": "Conheça o coordenador Deivson",
-          "descricao": "Coordenador do curso de Internet das Coisas.",
+          "nome": "JESSICA MOLITERNO GENU",
+          "titulo": "Conheça a coordenadora Jessica",
+          "descricao": "Coordenadora do curso de Administração.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
@@ -111,23 +23,34 @@
       ]
     },
     {
-      "curso": "INTELIGÊNCIA ARTIFICIAL",
+      "curso": "BIOMEDICINA",
       "coordenadores": [
         {
-          "nome": "ANDRE KUNIO DE OLIVEIRA TIBA",
-          "titulo": "Conheça o coordenador Andre Kunio",
-          "descricao": "Coordenador do curso de Inteligência Artificial.",
+          "nome": "MARIA CAROLINA DOS SANTOS GUEDES",
+          "titulo": "Conheça a coordenadora Maria Carolina",
+          "descricao": "Coordenadora do curso de Biomedicina.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
     },
     {
-      "curso": "ADMINISTRAÇÃO",
+      "curso": "CIÊNCIA DE DADOS",
       "coordenadores": [
         {
-          "nome": "JESSICA MOLITERNO GENU",
-          "titulo": "Conheça a coordenadora Jessica",
-          "descricao": "Coordenadora do curso de Administração.",
+          "nome": "DEIVSON CHAVES DA SILVA",
+          "titulo": "Conheça o coordenador Deivson",
+          "descricao": "Coordenador do curso de Ciência de Dados.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "CIÊNCIA POLÍTICA",
+      "coordenadores": [
+        {
+          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
+          "titulo": "Conheça a coordenadora Ana Flavia",
+          "descricao": "Coordenadora do curso de Ciência Política.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
@@ -144,50 +67,6 @@
       ]
     },
     {
-      "curso": "GASTRONOMIA",
-      "coordenadores": [
-        {
-          "nome": "JULYANNE CONCEICAO GOES DE MENDONCA",
-          "titulo": "Conheça a coordenadora Julyanne",
-          "descricao": "Coordenadora do curso de Gastronomia.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "NUTRIÇÃO",
-      "coordenadores": [
-        {
-          "nome": "JULYANNE CONCEICAO GOES DE MENDONCA",
-          "titulo": "Conheça a coordenadora Julyanne",
-          "descricao": "Coordenadora do curso de Nutrição.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "BIOMEDICINA",
-      "coordenadores": [
-        {
-          "nome": "MARIA CAROLINA DOS SANTOS GUEDES",
-          "titulo": "Conheça a coordenadora Maria Carolina",
-          "descricao": "Coordenadora do curso de Biomedicina.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
-      "curso": "RECURSOS HUMANOS",
-      "coordenadores": [
-        {
-          "nome": "KMILA PRICILLA PEREIRA",
-          "titulo": "Conheça a coordenadora Kmila",
-          "descricao": "Coordenadora do curso de Recursos Humanos.",
-          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
-        }
-      ]
-    },
-    {
       "curso": "COACHING DIGITAL",
       "coordenadores": [
         {
@@ -199,23 +78,89 @@
       ]
     },
     {
-      "curso": "PEDAGOGIA",
+      "curso": "COMPUTAÇÃO EM NUVEM",
       "coordenadores": [
         {
-          "nome": "MICHELLY SHAYANNE DE LIMA FERREIRA GUEDES",
-          "titulo": "Conheça a coordenadora Michelly",
-          "descricao": "Coordenadora do curso de Pedagogia.",
+          "nome": "DEIVSON CHAVES DA SILVA",
+          "titulo": "Conheça o coordenador Deivson",
+          "descricao": "Coordenador do curso de Computação em Nuvem.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
     },
     {
-      "curso": "SERVIÇO SOCIAL",
+      "curso": "DATA SCIENCE",
       "coordenadores": [
         {
-          "nome": "RAPHAEL DE MORAIS DANTAS",
-          "titulo": "Conheça o coordenador Raphael",
-          "descricao": "Coordenador do curso de Serviço Social.",
+          "nome": "DEIVSON CHAVES DA SILVA",
+          "titulo": "Conheça o coordenador Deivson",
+          "descricao": "Coordenador do curso de Data Science.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "GASTRONOMIA",
+      "coordenadores": [
+        {
+          "nome": "JULYANNE CONCEICAO GOES DE MENDONCA",
+          "titulo": "Conheça a coordenadora Julyanne",
+          "descricao": "Coordenadora do curso de Gastronomia.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "GESTÃO DA TECNOLOGIA DA INFORMAÇÃO",
+      "coordenadores": [
+        {
+          "nome": "DEIVSON CHAVES DA SILVA",
+          "titulo": "Conheça o coordenador Deivson",
+          "descricao": "Coordenador do curso de Gestão da Tecnologia da Informação.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "GESTÃO PÚBLICA",
+      "coordenadores": [
+        {
+          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
+          "titulo": "Conheça a coordenadora Ana Flavia",
+          "descricao": "Coordenadora do curso de Gestão Pública.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "INTELIGÊNCIA ARTIFICIAL",
+      "coordenadores": [
+        {
+          "nome": "ANDRE KUNIO DE OLIVEIRA TIBA",
+          "titulo": "Conheça o coordenador Andre Kunio",
+          "descricao": "Coordenador do curso de Inteligência Artificial.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "INTERNET DAS COISAS",
+      "coordenadores": [
+        {
+          "nome": "DEIVSON CHAVES DA SILVA",
+          "titulo": "Conheça o coordenador Deivson",
+          "descricao": "Coordenador do curso de Internet das Coisas.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "LOGÍSTICA",
+      "coordenadores": [
+        {
+          "nome": "JANNAINA MARIA LUCIENE DA SILVA",
+          "titulo": "Conheça a coordenadora Jannaina",
+          "descricao": "Coordenadora do curso de Logística.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
@@ -232,12 +177,67 @@
       ]
     },
     {
-      "curso": "LOGÍSTICA",
+      "curso": "NUTRIÇÃO",
       "coordenadores": [
         {
-          "nome": "JANNAINA MARIA LUCIENE DA SILVA",
-          "titulo": "Conheça a coordenadora Jannaina",
-          "descricao": "Coordenadora do curso de Logística.",
+          "nome": "JULYANNE CONCEICAO GOES DE MENDONCA",
+          "titulo": "Conheça a coordenadora Julyanne",
+          "descricao": "Coordenadora do curso de Nutrição.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "PEDAGOGIA",
+      "coordenadores": [
+        {
+          "nome": "MICHELLY SHAYANNE DE LIMA FERREIRA GUEDES",
+          "titulo": "Conheça a coordenadora Michelly",
+          "descricao": "Coordenadora do curso de Pedagogia.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "RECURSOS HUMANOS",
+      "coordenadores": [
+        {
+          "nome": "KMILA PRICILLA PEREIRA",
+          "titulo": "Conheça a coordenadora Kmila",
+          "descricao": "Coordenadora do curso de Recursos Humanos.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "SEGURANÇA PÚBLICA",
+      "coordenadores": [
+        {
+          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
+          "titulo": "Conheça a coordenadora Ana Flavia",
+          "descricao": "Coordenadora do curso de Segurança Pública.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "SERVIÇO SOCIAL",
+      "coordenadores": [
+        {
+          "nome": "RAPHAEL DE MORAIS DANTAS",
+          "titulo": "Conheça o coordenador Raphael",
+          "descricao": "Coordenador do curso de Serviço Social.",
+          "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
+        }
+      ]
+    },
+    {
+      "curso": "SERVIÇOS JURÍDICOS E NOTARIAIS",
+      "coordenadores": [
+        {
+          "nome": "ANA FLAVIA GOMES DA ROCHA SOARES",
+          "titulo": "Conheça a coordenadora Ana Flavia",
+          "descricao": "Coordenadora do curso de Serviços Jurídicos e Notariais.",
           "video": "https://api.spalla.io/v1/videos/xxx/download/video.mp4"
         }
       ]
