@@ -15,8 +15,8 @@
       "curso": "ANÁLISE E DESENVOLVIMENTO DE SISTEMAS",
       "coordenadores": [
         {
-          "nome": "ANDRE KUNIO DE OLIVEIRA TIBA",
-          "titulo": "Conheça o coordenador Andre Kunio",
+          "nome": "Laura Alves Pacifico da Silva",
+          "titulo": "Conheça a coordenadora Laura Alves Pacifico da Silva",
           "descricao": "Coordenador do curso de Análise e Desenvolvimento de Sistemas.",
           "video": "https://fast.player.liquidplatform.com/pApiv2/embed/746b3e163a5a5f89a10a96408c5d22c2/c10b7baed6b323beb0237cc1ca725dff"
         }
@@ -222,5 +222,6 @@
     }
   ]
 }
+
 
 
