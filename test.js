@@ -33,7 +33,8 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
         <style>
         #hubspotForm, #hubspotForm iframe {
             width: 100% !important; 
-            min-height: 500px !important; 
+            /* ALTURA REDUZIDA AQUI */
+            min-height: 380px !important; 
             height: auto !important;
         }
         </style>
@@ -50,18 +51,27 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
         onFormReady: function($form) {
             var styleTag = document.createElement('style');
             styleTag.textContent = `
+                /* ALTURA REDUZIDA AQUI TAMBÉM */
                 #hubspotForm, #hubspotForm iframe {
                     width: 100% !important; 
-                    min-height: 500px !important;
+                    min-height: 380px !important;
                     height: auto !important;
                 }
-                .hbspt-form { margin: 0px !important; width: 100%; }
-                .hbspt-form * { margin: 0; padding: 0; box-sizing: border-box; }
+                
+                /* FORÇANDO O BOX-SIZING EM TUDO PARA NÃO CORTAR NA DIREITA */
+                .hbspt-form, .hbspt-form * { 
+                    margin: 0; 
+                    padding: 0; 
+                    box-sizing: border-box !important; 
+                }
+                
                 .hbspt-form {
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                     width: 100%;
+                    max-width: 100%;
                     background: transparent;
-                    padding: 10px;
+                    padding: 5px; /* Padding reduzido para garantir espaço */
+                    overflow-x: hidden; /* Evita qualquer scroll horizontal indesejado */
                 }
                 .hbspt-form .hs-form-field { margin-bottom: 15px !important; }
                 .hbspt-form label {
@@ -71,10 +81,14 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
                     font-size: 13px !important; text-transform: uppercase !important;
                 }
                 .hbspt-form label.hs-error-msg {color:red !important;font-size:11px !important;font-weight:500 !important}
+                
+                /* BLINDAGEM DA LARGURA DOS INPUTS */
                 .hbspt-form input[type="text"],
                 .hbspt-form input[type="email"],
                 .hbspt-form input[type="tel"] {
-                    width: 100%; padding: 12px 16px !important;
+                    width: 100% !important; 
+                    max-width: 100% !important;
+                    padding: 12px 16px !important;
                     border: 1.5px solid #e2e8f0; border-radius: 10px;
                     background: #f8fafc; font-size: 15px; color: #2d3748;
                     transition: all 0.3s ease;
@@ -219,124 +233,3 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
         }
     });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    const btnComprar = document.getElementById('btn-comprar');
-    const popup = document.getElementById('popup-form');
-    const fecharPopup = document.getElementById('fechar-popup');
-
-    btnComprar.addEventListener('click', () => {
-        popup.classList.remove('hidden');
-        popup.classList.add('flex');
-        
-        initializeDynamicForms();
-    });
-
-    fecharPopup.addEventListener('click', () => {
-        popup.classList.add('hidden');
-        popup.classList.remove('flex');
-    });
-
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            popup.classList.add('hidden');
-            popup.classList.remove('flex');
-        }
-    });
-
-    const urlDoCurso = 'https://posead.uninassau.edu.br/nossos-cursos/especializacao-em-educacao-especial-e-inclusiva/453/60/digital';
-    const meuWorkerCloudflare = 'https://dry-frost-ff38.cliffordreis69.workers.dev/'; 
-    const urlProxy = meuWorkerCloudflare + '?url=' + encodeURIComponent(urlDoCurso);
-
-    const containerOpcoes = document.getElementById('payment-options-container');
-    const elTitulo = document.getElementById('curso-titulo');
-    const elDuracao = document.getElementById('curso-duracao');
-
-    function limparNomes(texto) { return texto ? texto.replace(/\s+/g, ' ').trim() : ""; }
-    function capitalizarTitulo(texto) { return texto ? texto.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()) : ""; }
-
-    fetch(urlProxy)
-        .then(r => {
-            if(!r.ok) throw new Error("Falha na resposta do proxy");
-            return r.text();
-        })
-        .then(html => {
-            try {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-
-                const tituloRaw = doc.querySelector('h1.prematricula-title');
-                elTitulo.textContent = tituloRaw ? capitalizarTitulo(limparNomes(tituloRaw.textContent)) : "Especialização (Nome não encontrado)";
-                elTitulo.classList.remove('skeleton-text');
-
-                let duracaoEncontrada = "6 meses";
-                doc.querySelectorAll('svg').forEach(svg => svg.remove());
-                const blocoIcones = doc.querySelector('.prematricula-icons');
-                
-                if (blocoIcones) {
-                    const textoLimpo = blocoIcones.textContent.toLowerCase();
-                    const matchNum = textoLimpo.match(/(\d+)[^a-z]*(mes|hora)/);
-                    if (matchNum) {
-                        const numero = matchNum[1];
-                        const tipo = matchNum[2].includes('hora') ? 'Horas' : 'Meses';
-                        duracaoEncontrada = `${numero} ${tipo}`;
-                    }
-                }
-                
-                elDuracao.textContent = duracaoEncontrada;
-                elDuracao.classList.remove('skeleton-text');
-
-                const cardsDeOferta = doc.querySelectorAll('.card-oferta');
-                if(cardsDeOferta.length === 0){
-                    containerOpcoes.innerHTML = `<div class="!p-6 text-center text-red-500 border-2 border-red-100 rounded-xl bg-red-50 !text-lg">As opções de pagamento não estão disponíveis no momento.</div>`;
-                    btnComprar.innerText = 'Prosseguir para inscrição';
-                    btnComprar.disabled = false;
-                    return;
-                }
-
-                containerOpcoes.innerHTML = "";
-
-                cardsDeOferta.forEach((card) => {
-                    const tituloTagEl = card.querySelector('.flex9') || card.querySelector('.card-oferta__header');
-                    const tagPromo = tituloTagEl ? limparNomes(tituloTagEl.textContent) : "";
-                    const precoAntigoEl = card.querySelector('.card-oferta__valor--bold');
-                    const precoAntigo = precoAntigoEl ? limparNomes(precoAntigoEl.textContent) : "";
-                    const precosNovosEls = card.querySelectorAll('.card-oferta__valores');
-                    let precoNovo = "";
-                    precosNovosEls.forEach(el => { const t = limparNomes(el.textContent); if(t) precoNovo = t; });
-                    const tipoEl = card.querySelector('.card-oferta__text--base');
-                    const formaPagamento = tipoEl ? limparNomes(tipoEl.textContent) : "";
-
-                    if (precoNovo) {
-                        const div = document.createElement('div');
-                        div.className = "payment-option border-slate-100 bg-white !p-6 rounded-xl flex justify-between items-center border-2";
-                        div.innerHTML = `
-                            <div class="flex items-center gap-4">
-                                <div>
-                                    <p class="font-bold text-slate-900 !text-3xl">${precoNovo}</p>
-                                    <p class="!text-lg text-slate-500 mt-1">${formaPagamento}</p>
-                                    ${tagPromo && tagPromo !== 'MÊS DO CONSUMIDOR' ? `<p class="!text-sm text-[#1565C0] font-bold mt-1">${tagPromo}</p>` : ''}
-                                </div>
-                            </div>
-                            ${precoAntigo ? `<span class="bg-red-50 border border-red-100 text-red-500 line-through !text-sm font-bold px-3 py-1 rounded-lg">De ${precoAntigo}</span>` : ''}
-                        `;
-                        containerOpcoes.appendChild(div);
-                    }
-                });
-
-                btnComprar.disabled = false;
-                
-            } catch (erroInterno) {
-                console.error("Erro ao processar os dados do site:", erroInterno);
-            }
-        })
-        .catch(err=>{
-            console.error("Erro na requisição:", err);
-            containerOpcoes.innerHTML = `<div class="!p-6 text-center text-slate-500 !text-lg">Erro ao comunicar com o servidor. Verifique o console.</div>`;
-            elTitulo.textContent = "Erro de conexão";
-            elDuracao.textContent = "Erro";
-            elTitulo.classList.remove('skeleton-text');
-            elDuracao.classList.remove('skeleton-text');
-        });
-});
