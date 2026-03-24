@@ -33,8 +33,7 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
         <style>
         #hubspotForm, #hubspotForm iframe {
             width: 100% !important; 
-            /* ALTURA REDUZIDA AQUI */
-            min-height: 380px !important; 
+            min-height: 280px !important; 
             height: auto !important;
         }
         </style>
@@ -51,14 +50,12 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
         onFormReady: function($form) {
             var styleTag = document.createElement('style');
             styleTag.textContent = `
-                /* ALTURA REDUZIDA AQUI TAMBÉM */
                 #hubspotForm, #hubspotForm iframe {
                     width: 100% !important; 
-                    min-height: 380px !important;
+                    min-height: 280px !important;
                     height: auto !important;
                 }
                 
-                /* FORÇANDO O BOX-SIZING EM TUDO PARA NÃO CORTAR NA DIREITA */
                 .hbspt-form, .hbspt-form * { 
                     margin: 0; 
                     padding: 0; 
@@ -70,8 +67,8 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
                     width: 100%;
                     max-width: 100%;
                     background: transparent;
-                    padding: 5px; /* Padding reduzido para garantir espaço */
-                    overflow-x: hidden; /* Evita qualquer scroll horizontal indesejado */
+                    padding: 5px; 
+                    overflow-x: hidden; 
                 }
                 .hbspt-form .hs-form-field { margin-bottom: 15px !important; }
                 .hbspt-form label {
@@ -82,7 +79,6 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
                 }
                 .hbspt-form label.hs-error-msg {color:red !important;font-size:11px !important;font-weight:500 !important}
                 
-                /* BLINDAGEM DA LARGURA DOS INPUTS */
                 .hbspt-form input[type="text"],
                 .hbspt-form input[type="email"],
                 .hbspt-form input[type="tel"] {
