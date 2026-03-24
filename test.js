@@ -8,6 +8,8 @@ function initializeDynamicForms() {
 
     iframeDiv = document.querySelector('#iframeForm');
     spotDiv = document.querySelector('#hubspotForm');
+    if (!iframeDiv || !spotDiv) return;
+
     const divContent = iframeDiv.innerHTML;
     
     formLinkMatch = divContent.match(/##FORMLINK=(.*?)##/);
@@ -26,7 +28,6 @@ function initializeDynamicForms() {
 }
 
 function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
-    // Fim da tentativa de adivinhar pixels pelo JS. O CSS assume o controle total da responsividade.
     const formHTML = `
         <style>
         #hubspotForm {
@@ -60,7 +61,6 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
                     height: auto !important;
                 }
                 
-                /* Box-sizing blindado para garantir que o padding não quebre a largura 100% */
                 .hbspt-form, .hbspt-form * { 
                     margin: 0; 
                     padding: 0; 
@@ -189,35 +189,23 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
             telefoneInput.addEventListener('input', function(e) {
                 const cursorPosition = e.target.selectionStart;
                 let value = e.target.value.replace(/\D/g, '');
-                
                 const currentValue = e.target.value;
-                
                 let formattedValue = '';
-                if (value.length === 11) {
-                    formattedValue = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
-                } else if (value.length === 10) {
-                    formattedValue = value.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
-                } else if (value.length > 0) {
+                
+                if (value.length === 11) formattedValue = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+                else if (value.length === 10) formattedValue = value.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
+                else if (value.length > 0) {
                     formattedValue = value.replace(/^(\d{0,2})/, '($1)');
                     if (value.length > 2) {
-                        if (value.length <= 6) {
-                            formattedValue = formattedValue.replace(/(\d{4})$/, ' $1');
-                        } else if (value.length <= 10) {
-                            formattedValue = formattedValue.replace(/(\d{4})(\d{0,4})$/, ' $1-$2');
-                        } else {
-                            formattedValue = formattedValue.replace(/(\d{5})(\d{0,4})$/, ' $1-$2');
-                        }
+                        if (value.length <= 6) formattedValue = formattedValue.replace(/(\d{4})$/, ' $1');
+                        else if (value.length <= 10) formattedValue = formattedValue.replace(/(\d{4})(\d{0,4})$/, ' $1-$2');
+                        else formattedValue = formattedValue.replace(/(\d{5})(\d{0,4})$/, ' $1-$2');
                     }
                 }
                 
                 e.target.value = formattedValue;
-                
-                if (currentValue.length > formattedValue.length && cursorPosition > 0) {
-                    e.target.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
-                } else {
-                    e.target.setSelectionRange(formattedValue.length, formattedValue.length);
-                }
-                
+                if (currentValue.length > formattedValue.length && cursorPosition > 0) e.target.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
+                else e.target.setSelectionRange(formattedValue.length, formattedValue.length);
                 previousValue = formattedValue;
             });
             
@@ -225,56 +213,187 @@ function createDynamicForm(iframeDiv, formLink, corFundo, corBotao) {
                 if (e.key === 'Backspace') {
                     const cursorPosition = e.target.selectionStart;
                     const value = e.target.value;
-                    
-                    if (cursorPosition > 0 && 
-                        (value[cursorPosition - 1] === ' ' || 
-                        value[cursorPosition - 1] === '(' || 
-                        value[cursorPosition - 1] === ')' || 
-                        value[cursorPosition - 1] === '-')) {
+                    if (cursorPosition > 0 && (value[cursorPosition - 1] === ' ' || value[cursorPosition - 1] === '(' || value[cursorPosition - 1] === ')' || value[cursorPosition - 1] === '-')) {
                         e.preventDefault();
                         e.target.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
                     }
                 }
             });
-            telefoneInput.addEventListener('keydown', function () {
-                    this.setCustomValidity('');
-            });
+            
+            telefoneInput.addEventListener('keydown', function () { this.setCustomValidity(''); });
+            
             telefoneInput.addEventListener('blur', function () {
                 const digits = this.value.replace(/\D/g, '');
-                if (digits.length !== 10 && digits.length !== 11) {
-                    this.setCustomValidity('Digite um telefone válido.');
-                } else {
-                    this.setCustomValidity('');
-                }
+                if (digits.length !== 10 && digits.length !== 11) this.setCustomValidity('Digite um telefone válido.');
+                else this.setCustomValidity('');
             });
+
             submitButton.addEventListener('click', function(e) {
                 phoneInput.value = telefoneInput.value.replace(/\D/g, '');
-
                 if (nomeInput) validarNome(nomeInput);
                 if (emailInput) validarEmail(emailInput);
-
                 if (!$form.checkValidity()) {
-                    e.preventDefault();
-                    $form.reportValidity();
-                    return;
+                    e.preventDefault(); $form.reportValidity(); return;
                 }
             });
-
         },
         onFormSubmit: function($form) {
             if (!$form.checkValidity()) {
-                $form.reportValidity();
-                return false;
+                $form.reportValidity(); return false;
             }
             var nome = $form.querySelector('[name="nome_ser"]')?.value;
             var email = $form.querySelector('[name="email"]')?.value;
             var phone = $form.querySelector('[name="phone"]')?.value;
 
             var redirectUrl = formLinkMatch + '?nome=' + encodeURIComponent(nome) + '&email=' + encodeURIComponent(email) + '&telefone=' + encodeURIComponent(phone) + '&bg=1565c0';
-            
             window.top.location.href = redirectUrl;
             return false;
         }
     });
-
 }
+
+// =====================================================================
+// TODA A LÓGICA DE EVENTOS DA PÁGINA (TELEPORTE, MODAL E PREÇOS)
+// =====================================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. O Teleporte Mágico: Garante que o fundo escuro ocupe a tela toda
+    const popupOriginal = document.getElementById('popup-form');
+    if(popupOriginal) {
+        document.body.appendChild(popupOriginal);
+    }
+
+    const btnComprar = document.getElementById('btn-comprar');
+    const popup = document.getElementById('popup-form');
+    const fecharPopup = document.getElementById('fechar-popup');
+
+    if(btnComprar && popup) {
+        btnComprar.addEventListener('click', () => {
+            popup.classList.remove('hidden');
+            popup.classList.add('flex');
+            initializeDynamicForms();
+        });
+    }
+
+    if(fecharPopup && popup) {
+        fecharPopup.addEventListener('click', () => {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+        });
+    }
+
+    if(popup) {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.add('hidden');
+                popup.classList.remove('flex');
+            }
+        });
+    }
+
+    // 2. O Fetch que puxa os preços da Uninassau
+    const urlDoCurso = 'https://posead.uninassau.edu.br/nossos-cursos/especializacao-em-educacao-especial-e-inclusiva/453/60/digital';
+    const meuWorkerCloudflare = 'https://dry-frost-ff38.cliffordreis69.workers.dev/'; 
+    const urlProxy = meuWorkerCloudflare + '?url=' + encodeURIComponent(urlDoCurso);
+
+    const containerOpcoes = document.getElementById('payment-options-container');
+    const elTitulo = document.getElementById('curso-titulo');
+    const elDuracao = document.getElementById('curso-duracao');
+
+    function limparNomes(texto) { return texto ? texto.replace(/\s+/g, ' ').trim() : ""; }
+    function capitalizarTitulo(texto) { return texto ? texto.toLowerCase().replace(/(^\w|\s\w)/g, m => m.toUpperCase()) : ""; }
+
+    fetch(urlProxy)
+        .then(r => {
+            if(!r.ok) throw new Error("Falha na resposta do proxy");
+            return r.text();
+        })
+        .then(html => {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const tituloRaw = doc.querySelector('h1.prematricula-title');
+                if(elTitulo) {
+                    elTitulo.textContent = tituloRaw ? capitalizarTitulo(limparNomes(tituloRaw.textContent)) : "Especialização (Nome não encontrado)";
+                    elTitulo.classList.remove('skeleton-text');
+                }
+
+                let duracaoEncontrada = "6 meses";
+                doc.querySelectorAll('svg').forEach(svg => svg.remove());
+                const blocoIcones = doc.querySelector('.prematricula-icons');
+                
+                if (blocoIcones) {
+                    const textoLimpo = blocoIcones.textContent.toLowerCase();
+                    const matchNum = textoLimpo.match(/(\d+)[^a-z]*(mes|hora)/);
+                    if (matchNum) {
+                        const numero = matchNum[1];
+                        const tipo = matchNum[2].includes('hora') ? 'Horas' : 'Meses';
+                        duracaoEncontrada = `${numero} ${tipo}`;
+                    }
+                }
+                
+                if(elDuracao) {
+                    elDuracao.textContent = duracaoEncontrada;
+                    elDuracao.classList.remove('skeleton-text');
+                }
+
+                const cardsDeOferta = doc.querySelectorAll('.card-oferta');
+                if(cardsDeOferta.length === 0){
+                    if(containerOpcoes) containerOpcoes.innerHTML = `<div class="!p-6 text-center text-red-500 border-2 border-red-100 rounded-xl bg-red-50 !text-lg">As opções de pagamento não estão disponíveis no momento.</div>`;
+                    if(btnComprar) {
+                        btnComprar.innerText = 'Prosseguir para inscrição';
+                        btnComprar.disabled = false;
+                    }
+                    return;
+                }
+
+                if(containerOpcoes) containerOpcoes.innerHTML = "";
+
+                cardsDeOferta.forEach((card) => {
+                    const tituloTagEl = card.querySelector('.flex9') || card.querySelector('.card-oferta__header');
+                    const tagPromo = tituloTagEl ? limparNomes(tituloTagEl.textContent) : "";
+                    const precoAntigoEl = card.querySelector('.card-oferta__valor--bold');
+                    const precoAntigo = precoAntigoEl ? limparNomes(precoAntigoEl.textContent) : "";
+                    const precosNovosEls = card.querySelectorAll('.card-oferta__valores');
+                    let precoNovo = "";
+                    precosNovosEls.forEach(el => { const t = limparNomes(el.textContent); if(t) precoNovo = t; });
+                    const tipoEl = card.querySelector('.card-oferta__text--base');
+                    const formaPagamento = tipoEl ? limparNomes(tipoEl.textContent) : "";
+
+                    if (precoNovo && containerOpcoes) {
+                        const div = document.createElement('div');
+                        div.className = "payment-option border-slate-100 bg-white !p-6 rounded-xl flex justify-between items-center border-2";
+                        div.innerHTML = `
+                            <div class="flex items-center gap-4">
+                                <div>
+                                    <p class="font-bold text-slate-900 !text-3xl">${precoNovo}</p>
+                                    <p class="!text-lg text-slate-500 mt-1">${formaPagamento}</p>
+                                    ${tagPromo && tagPromo !== 'MÊS DO CONSUMIDOR' ? `<p class="!text-sm text-[#1565C0] font-bold mt-1">${tagPromo}</p>` : ''}
+                                </div>
+                            </div>
+                            ${precoAntigo ? `<span class="bg-red-50 border border-red-100 text-red-500 line-through !text-sm font-bold px-3 py-1 rounded-lg">De ${precoAntigo}</span>` : ''}
+                        `;
+                        containerOpcoes.appendChild(div);
+                    }
+                });
+
+                if(btnComprar) btnComprar.disabled = false;
+                
+            } catch (erroInterno) {
+                console.error("Erro ao processar os dados do site:", erroInterno);
+            }
+        })
+        .catch(err=>{
+            console.error("Erro na requisição:", err);
+            if(containerOpcoes) containerOpcoes.innerHTML = `<div class="!p-6 text-center text-slate-500 !text-lg">Erro ao comunicar com o servidor. Verifique o console.</div>`;
+            if(elTitulo) {
+                elTitulo.textContent = "Erro de conexão";
+                elTitulo.classList.remove('skeleton-text');
+            }
+            if(elDuracao) {
+                elDuracao.textContent = "Erro";
+                elDuracao.classList.remove('skeleton-text');
+            }
+        });
+});
