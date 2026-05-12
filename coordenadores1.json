@@ -78,28 +78,6 @@
       ]
     },
     {
-      "curso": "GESTÃO AMBIENTAL",
-      "coordenadores": [
-        {
-          "nome": "ROBERTO MENEZES",
-          "titulo": "Conheça o coordenador Roberto",
-          "descricao": "Coordenador do curso de Gestão Ambiental.",
-          "video": "https://beyond.spalla.io/player/?video=019db59d-ba28-7df4-8c08-6c52ff4ddbab"
-        }
-      ]
-    },
-    {
-      "curso": "ENGENHARIA ELETRICA",
-      "coordenadores": [
-        {
-          "nome": "ROBERTO MENEZES",
-          "titulo": "Conheça o coordenador Roberto",
-          "descricao": "Coordenador do curso de Engenharia Elétrica.",
-          "video": "https://beyond.spalla.io/player/?video=019db59d-ba28-7df5-b622-1ca06a20aadb"
-        }
-      ]
-    },
-    {
       "curso": "ESTETICA E COSMETICA",
       "coordenadores": [
         {
@@ -221,17 +199,6 @@
       ]
     },
     {
-      "curso": "CIENCIAS AERONAUTICAS",
-      "coordenadores": [
-        {
-          "nome": "PEDRO ALVIM",
-          "titulo": "Conheça o coordenador Pedro",
-          "descricao": "Coordenador do curso de Ciências Aeronáuticas.",
-          "video": "https://beyond.spalla.io/player/?video=019db599-ee9b-7c6a-8852-6c52017fe4aa"
-        }
-      ]
-    },
-    {
       "curso": "SEGURANCA DA INFORMACAO",
       "coordenadores": [
         {
@@ -261,17 +228,6 @@
           "titulo": "Conheça o coordenador Claudio",
           "descricao": "Coordenador do curso de Ciências Biológicas.",
           "video": "https://beyond.spalla.io/player/?video=019db599-ee93-7c69-935c-0cf76a50136f"
-        }
-      ]
-    },
-    {
-      "curso": "EDUCAÇÃO FISICA",
-      "coordenadores": [
-        {
-          "nome": "BRUNO BARRETO",
-          "titulo": "Conheça o coordenador Bruno",
-          "descricao": "Coordenador do curso de Educação Física.",
-          "video": "https://beyond.spalla.io/player/?video=019db599-ee92-7c69-847a-1afa94733f22"
         }
       ]
     },
